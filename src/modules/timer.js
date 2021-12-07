@@ -37,22 +37,33 @@ const timer = (deadLine) => {
         };
     };
 
+    let getZero = (n) => {
+        if (n < 10) return "0" + n;
+        return n;
+    };
+
     //обновление таймера
-    const updateClock = () => {
+    const updateClock = setInterval(() => {
         let getTime = getTimeRemaining();
         console.log(getTime);
         //заносим время в span
-        timerHours.textContent = getTime.hours;
-        timerMinutes.textContent = getTime.minutes;
-        timerSeconds.textContent = getTime.seconds;
+        timerHours.textContent = getZero(getTime.hours);
+        timerMinutes.textContent = getZero(getTime.minutes);
+        timerSeconds.textContent = getZero(getTime.seconds);
 
-        if (timeRemaining > 0) {
+        if (getTime.timeRemaining <= 0) {
             //расчет до 0
-            setTimeout(updateClock, 1000);
+            clearInterval(updateClock);
+            timerHours.textContent = "00";
+            timerHours.style.color = "red";
+            timerMinutes.textContent = "00";
+            timerMinutes.style.color = "red";
+            timerSeconds.textContent = "00";
+            timerSeconds.style.color = "red";
         }
-    };
+    }, 1000);
 
-    updateClock();
+    //updateClock();
     //getTimeReaining("16 december 2021");
     //setInterval(countTimer, 1000, "16 december 2021");
 };
