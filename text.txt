@@ -6,4 +6,3 @@ const three = () => {
 };
 
 export default three;
-//эксперимент
