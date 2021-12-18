@@ -1,3 +1,7 @@
 import timer from "./modules/timer.js";
+import menu from "./modules/menu.js";
+import modal from "./modules/modal.js";
 
-timer("16 december 2021");
+menu();
+timer("25 december 2021");
+modal();

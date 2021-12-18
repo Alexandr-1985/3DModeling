@@ -4,19 +4,14 @@ const timer = (deadLine) => {
     const timerMinutes = document.getElementById("timer-minutes");
     const timerSeconds = document.getElementById("timer-seconds");
 
-    console.log(timerHours);
-    console.log(timerMinutes);
-    console.log(timerSeconds);
-
     const getTimeRemaining = () => {
         //let deadLine = "16 december 2021";
         let dateStop = new Date(deadLine).getTime();
         let dateNow = new Date().getTime();
-        console.log(dateStop);
-        console.log(dateNow);
+
         //колличество милисекунд до deadLine (/1000 - получение секунд)
         let timeRemaining = (dateStop - dateNow) / 1000;
-        console.log(timeRemaining);
+
         //колличество дней оставшихся до deadLine
         //  let days = Math.floor(timeRemaining / 60 / 60 / 24);
         // console.log(days);
@@ -24,10 +19,6 @@ const timer = (deadLine) => {
         let hours = Math.floor(timeRemaining / 60 / 60);
         let minutes = Math.floor((timeRemaining / 60) % 60);
         let seconds = Math.floor(timeRemaining % 60);
-
-        console.log(hours);
-        console.log(minutes);
-        console.log(seconds);
 
         return {
             timeRemaining,
@@ -45,7 +36,7 @@ const timer = (deadLine) => {
     //обновление таймера
     const updateClock = setInterval(() => {
         let getTime = getTimeRemaining();
-        console.log(getTime);
+
         //заносим время в span
         timerHours.textContent = getZero(getTime.hours);
         timerMinutes.textContent = getZero(getTime.minutes);

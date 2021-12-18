@@ -2,7 +2,7 @@ const three = () => {
     console.log("npm init )!");
     console.log("npm install webpack webpack-cli --save-dev )!");
     console.log("npx webpack )!");
-    console.log("npm run watch )!");
+    console.log("npm run watch )!");  -> ctrl+C
 };
 
 export default three;
