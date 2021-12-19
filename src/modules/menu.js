@@ -3,36 +3,48 @@ const menu = () => {
     const menu = document.querySelector("menu");
     const closeBtn = menu.querySelector(".close-btn");
     const menuItems = menu.querySelectorAll("ul>li>a");
+    const serviceBlock = document.querySelector("a[href='#service-block']");
 
-    console.log(menuBtn);
+    console.dir(serviceBlock.getAttribute);
+    console.log(serviceBlock.getAttribute("href"));
 
     //фуи для открытия и закрытия меню
     const handleMenu = () => {
-        // if (!menu.style.transform) {
-        //     menu.style.transform = `translateX(0)`;
-        // } else {
-        //     menu.style.transform = ``;
-        // }
-
-        //toggle проверяет, есть ли на элементе класс (закроет/ откроет)
         menu.classList.toggle("active-menu");
     };
+
     menuBtn.addEventListener("click", () => {
-        // console.dir(menu.style.transform);
         handleMenu();
     });
 
-    closeBtn.addEventListener("click", handleMenu);
+    closeBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        handleMenu();
+    });
 
-    //вариант перебора коллекции menuItems
-    // for (let i = 0; i < length.menuItems; i++) {
-    // menuItems[i].addEventListener("click", handleMenu);
-    // }
+    const smoothScroll = (a) => {
+        let blockId;
+        blockId = a.getAttribute("href");
+        //плавное передвижение по экрану
+        document.querySelector(blockId).scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    };
+
+    serviceBlock.addEventListener("click", (event) => {
+        event.preventDefault();
+        smoothScroll(serviceBlock);
+    });
 
     //выполняем методом forEach
-    menuItems.forEach((menuItem) =>
-        menuItem.addEventListener("click", handleMenu)
-    );
+    menuItems.forEach((menuItem) => {
+        menuItem.addEventListener("click", (event) => {
+            event.preventDefault();
+            handleMenu();
+            smoothScroll(menuItem);
+        });
+    });
 };
 
 export default menu;

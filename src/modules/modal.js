@@ -3,52 +3,39 @@ const modal = () => {
     const buttons = document.querySelectorAll(".popup-btn");
     const closeBtn = modal.querySelector(".popup-close");
     const MOBILE_WIDTH = 768;
+    let idInterval;
+    let count = 0;
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
-            document.documentElement.clientWidth > MOBILE_WIDTH ?
-                showModal() :
-                (modal.style.display = "block"); //окно открылось
+            showModal();
         });
     });
-
     closeBtn.addEventListener("click", () => {
-        document.documentElement.clientWidth > MOBILE_WIDTH ?
-            closeModal() :
-            (modal.style.display = "none"); //закрывает
+        modal.style.display = "none"; //закрывает
     });
 
     const showModal = () => {
-        let count = 0;
-        let idInterval;
-        modal.style.display = "block";
-        const fadeIn = () => {
-            count += 5;
-            if (count <= 1) {
-                idInterval = requestAnimationFrame(fadeIn);
-                modal.style.opacity = `${count}`;
-            } else {
-                cancelAnimationFrame(idInterval);
+        if ((modal.style.display = "none")) {
+            modal.style.display = "block"; //окно открылось
+            modal.style.transform = "translateX(0)";
+            if (document.documentElement.offsetWidth >= MOBILE_WIDTH) {
+                animationFuncModul();
             }
-        };
-        fadeIn();
+        }
     };
 
-    const closeModal = () => {
-        let count = 0;
-        let idInterval;
-        //modal.style.display = "none";
-        const fadeOut = () => {
-            count -= 0.5;
-            if (count >= 0) {
-                idInterval = requestAnimationFrame(fadeOut);
-                modal.style.opacity = `${count}`;
-            } else {
-                cancelAnimationFrame(idInterval);
-                modal.style.display = "none";
-            }
-        };
-        fadeOut();
+    const animationFuncModul = () => {
+        idInterval = requestAnimationFrame(animationFuncModul);
+        count += 5;
+
+        if (count <= 100) {
+            modal.style.transform = `translateX(${100 - count}%)`;
+        } else {
+            cancelAnimationFrame(idInterval);
+            modal.style.display = "block";
+            count = 0;
+        }
     };
 };
 

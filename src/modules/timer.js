@@ -5,7 +5,6 @@ const timer = (deadLine) => {
     const timerSeconds = document.getElementById("timer-seconds");
 
     const getTimeRemaining = () => {
-        //let deadLine = "16 december 2021";
         let dateStop = new Date(deadLine).getTime();
         let dateNow = new Date().getTime();
 
@@ -13,9 +12,6 @@ const timer = (deadLine) => {
         let timeRemaining = (dateStop - dateNow) / 1000;
 
         //колличество дней оставшихся до deadLine
-        //  let days = Math.floor(timeRemaining / 60 / 60 / 24);
-        // console.log(days);
-        //  let hours = Math.floor((timeRemaining / 60 / 60) % 24);
         let hours = Math.floor(timeRemaining / 60 / 60);
         let minutes = Math.floor((timeRemaining / 60) % 60);
         let seconds = Math.floor(timeRemaining % 60);
@@ -53,10 +49,6 @@ const timer = (deadLine) => {
             timerSeconds.style.color = "red";
         }
     }, 1000);
-
-    //updateClock();
-    //getTimeReaining("16 december 2021");
-    //setInterval(countTimer, 1000, "16 december 2021");
 };
 
 export default timer;
