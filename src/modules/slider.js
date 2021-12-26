@@ -1,75 +1,80 @@
 const slider = () => {
     const sliderBlock = document.querySelector(".portfolio-content");
     const slides = document.querySelectorAll(".portfolio-item");
-    const dots = document.querySelectorAll(".dot");
+    const portfolioDots = document.querySelector(".portfolio-dots");
+    console.log(slides);
 
-    let timeInterval = 2000;
+    let dots = [];
     let currentSlide = 0;
     let interval;
 
-    const prevSlide = (elens, index, strClass) => {
-        elens[index].classList.remove(strClass);
+    const creatDot = () => {
+        slides.forEach((item, index) => {
+            let li = document.createElement("li");
+            if (index === 0) {
+                li.className = "dot dot-active";
+            } else {
+                li.className = "dot";
+            }
+            portfolioDots.append(li);
+            dots.push(li);
+        });
     };
+    creatDot();
 
-    const nextSlide = (elens, index, strClass) => {
-        elens[index].classList.add(strClass);
+    let prevSlide = (elem, index, strClass) => {
+        elem[index].classList.remove(strClass);
+    };
+    let nextSlide = (elem, index, strClass) => {
+        elem[index].classList.add(strClass);
     };
 
     const autoslide = () => {
         prevSlide(slides, currentSlide, "portfolio-item-active");
         prevSlide(dots, currentSlide, "dot-active");
+
         currentSlide++;
 
         if (currentSlide >= slides.length) {
             currentSlide = 0;
         }
+
         nextSlide(slides, currentSlide, "portfolio-item-active");
         nextSlide(dots, currentSlide, "dot-active");
     };
 
-    const startSlide = (timer = 1500) => {
-        interval = setInterval(autoslide, timer);
+    let startSlide = () => {
+        interval = setInterval(autoslide, 2000);
     };
+
+    startSlide();
 
     const stopSlide = () => {
         clearInterval(interval);
     };
-
     sliderBlock.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(e.target);
-
-        //ограничитель
         if (!e.target.matches(".dot, .portfolio-btn")) {
-            //console.log(1);
             return;
         }
-
         prevSlide(slides, currentSlide, "portfolio-item-active");
         prevSlide(dots, currentSlide, "dot-active");
-
         if (e.target.matches("#arrow-right")) {
-            console.log("arrow-right");
             currentSlide++;
         } else if (e.target.matches("#arrow-left")) {
-            console.log("arrow-left");
             currentSlide--;
         } else if (e.target.classList.contains("dot")) {
-            console.log("dot");
             dots.forEach((dot, index) => {
                 if (e.target === dot) {
                     currentSlide = index;
                 }
             });
         }
-
         if (currentSlide >= slides.length) {
             currentSlide = 0;
-        }
-        if (currentSlide < 0) {
+        } else if (currentSlide < 0) {
             currentSlide = slides.length - 1;
         }
-
         nextSlide(slides, currentSlide, "portfolio-item-active");
         nextSlide(dots, currentSlide, "dot-active");
     });
@@ -77,10 +82,8 @@ const slider = () => {
     sliderBlock.addEventListener(
         "mouseenter",
         (e) => {
-            //ограничитель
             if (e.target.matches(".dot, .portfolio-btn")) {
-                //  console.log(e.target);
-                stopSlide(timeInterval);
+                stopSlide();
             }
         },
         true
@@ -88,16 +91,12 @@ const slider = () => {
     sliderBlock.addEventListener(
         "mouseleave",
         (e) => {
-            //ограничитель
             if (e.target.matches(".dot, .portfolio-btn")) {
-                // console.log(e.target);
-                startSlide(timeInterval);
+                startSlide();
             }
         },
         true
     );
-
-    startSlide();
 };
 
 export default slider;
