@@ -11,5 +11,14 @@ timer("31 december 2021");
 modal();
 validation();
 tabs();
-slider();
+slider({
+    sliderClass: "portfolio-content",
+    slideClass: "portfolio-item",
+    dotClass: "dot",
+    sliderActiveClass: "portfolio-item-active",
+    dotActiveClass: "dot-active",
+    arrowClass: "portfolio-btn",
+    arrowNextId: "arrow-right",
+    arrowPrevId: "arrow-left",
+});
 calc(100);
