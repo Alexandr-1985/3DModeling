@@ -4,10 +4,12 @@ import modal from "./modules/modal.js";
 import validation from "./modules/validCalc.js";
 import tabs from "./modules/tabs.js";
 import slider from "./modules/slider.js";
+import calc from "./modules/calc.js";
 
 menu();
-timer("28 december 2021");
+timer("31 december 2021");
 modal();
 validation();
 tabs();
 slider();
+calc(100);

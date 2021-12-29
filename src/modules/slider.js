@@ -2,7 +2,7 @@ const slider = () => {
     const sliderBlock = document.querySelector(".portfolio-content");
     const slides = document.querySelectorAll(".portfolio-item");
     const portfolioDots = document.querySelector(".portfolio-dots");
-    console.log(slides);
+    //console.log(slides);
 
     let dots = [];
     let currentSlide = 0;

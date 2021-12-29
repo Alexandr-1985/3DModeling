@@ -39,7 +39,7 @@ modal.style.display = "none"; //закрывает
     };
 
     modal.addEventListener("click", (e) => {
-        console.log("e.trget.closest");
+        // console.log("e.trget.closest");
         if (!e.target.closest(".popup-content") ||
             e.target.classList.contains("popup-close")
         ) {
@@ -48,19 +48,19 @@ modal.style.display = "none"; //закрывает
         }
     });
     /*
-            //навешивание делегирования на весь документ
-            document.addEventListener("click", (e) => {
-                if (e.target.classList.contains("popup-btn")) {
-                    e.preventDefault();
-                    modal.style.display = "block";
-                }
-            });
-            //навешивание делегирования на TAG button
-            document.addEventListener("click", (e) => {
-                if (e.target.matches("button")) {
-                    modal.style.display = "block";
-                }
-            });*/
+              //навешивание делегирования на весь документ
+              document.addEventListener("click", (e) => {
+                  if (e.target.classList.contains("popup-btn")) {
+                      e.preventDefault();
+                      modal.style.display = "block";
+                  }
+              });
+              //навешивание делегирования на TAG button
+              document.addEventListener("click", (e) => {
+                  if (e.target.matches("button")) {
+                      modal.style.display = "block";
+                  }
+              });*/
 };
 
 export default modal;

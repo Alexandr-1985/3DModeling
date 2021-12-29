@@ -24,7 +24,7 @@ const menu = () => {
             handleMenu();
         } else if (target.closest('a[href="#service-block"]')) {
             e.preventDefault();
-            console.log(target);
+            //console.log(target);
             smoothScroll(target.closest('a[href="#service-block"]'));
         } else if (menu.classList.contains("active-menu") && target !== menu) {
             handleMenu();
@@ -43,30 +43,30 @@ const menu = () => {
         }
     });
     /*
-      //listner menu on all body 
-        body.addEventListener("click", (e) => {
-            const target = e.target;
-            console.log(target);
-            if (target.closest(".menu")) {
-                handleMenu();
-            } else if (target.closest(".close-btn")) {
-                e.preventDefault();
-                handleMenu();
-            } else if (
-                target.closest('a[href="#service-block"]') &&
-                !target.closest("menu")
-            ) {
-                e.preventDefault();
-                console.log(target);
-                smoothScroll(target.closest('a[href="#service-block"]'));
-            } else if (target.closest("a") && target.closest("menu")) {
-                e.preventDefault();
-                handleMenu();
-                smoothScroll(target);
-            } else if (menu.classList.contains("active-menu") && target !== menu) {
-                handleMenu();
-            }
-        });*/
+                listner menu on all body 
+                  body.addEventListener("click", (e) => {
+                      const target = e.target;
+                      console.log(target);
+                      if (target.closest(".menu")) {
+                          handleMenu();
+                      } else if (target.closest(".close-btn")) {
+                          e.preventDefault();
+                          handleMenu();
+                      } else if (
+                          target.closest('a[href="#service-block"]') &&
+                          !target.closest("menu")
+                      ) {
+                          e.preventDefault();
+                          console.log(target);
+                          smoothScroll(target.closest('a[href="#service-block"]'));
+                      } else if (target.closest("a") && target.closest("menu")) {
+                          e.preventDefault();
+                          handleMenu();
+                          smoothScroll(target);
+                      } else if (menu.classList.contains("active-menu") && target !== menu) {
+                          handleMenu();
+                      }
+                  });*/
 };
 
 export default menu;
