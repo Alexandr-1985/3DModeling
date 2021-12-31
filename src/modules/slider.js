@@ -1,6 +1,7 @@
 const slider = ({
     sliderClass,
     slideClass,
+    dotsClass,
     dotClass,
     sliderActiveClass = "slide-active",
     dotActiveClass = "dot-active",
@@ -13,7 +14,7 @@ const slider = ({
     } else {
         const sliderBlock = document.querySelector(`.${sliderClass}`);
         const slides = document.querySelectorAll(`.${slideClass}`);
-        const portfolioDots = document.querySelector(`.${dotClass}`);
+        const portfolioDots = document.querySelector(`.${dotsClass}`);
         //console.log(slides);
 
         let dots = [];

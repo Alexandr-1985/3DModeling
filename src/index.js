@@ -7,13 +7,14 @@ import slider from "./modules/slider.js";
 import calc from "./modules/calc.js";
 
 menu();
-timer("31 december 2021");
+timer("31 december 2022");
 modal();
 validation();
 tabs();
 slider({
     sliderClass: "portfolio-content",
     slideClass: "portfolio-item",
+    dotsClass: "portfolio-dots",
     dotClass: "dot",
     sliderActiveClass: "portfolio-item-active",
     dotActiveClass: "dot-active",
