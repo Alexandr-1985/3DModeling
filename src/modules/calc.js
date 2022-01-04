@@ -40,7 +40,29 @@ const calc = (price = 100) => {
             totalValue = 0;
         }
         //выводим
-        total.textContent = totalValue;
+        //   total.textContent = totalValue;
+        getCounterSmooth(totalValue, total);
+    };
+
+    //плавный счетчик
+    const getCounterSmooth = (num, elem) => {
+        const time = 0.01;
+        let step = 0;
+        if (calcSquare.value < 100) {
+            step = 100;
+        }
+        if (calcSquare.value >= 100) {
+            step = 4000;
+        }
+        let n = 0;
+        let t = Math.round(time / (num / step));
+        let interval = setInterval(() => {
+            n = n + step;
+            if (n >= Math.round(num)) {
+                clearInterval(interval);
+            }
+            elem.textContent = n;
+        }, t);
     };
 
     calcBlock.addEventListener("input", e => {
