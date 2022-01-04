@@ -1,3 +1,4 @@
+import animate from "./animate";
 const calc = (price = 100) => {
     // console.log(price);
 
@@ -41,28 +42,21 @@ const calc = (price = 100) => {
         }
         //выводим
         //   total.textContent = totalValue;
+        getCounterSmoothAnimate(totalValue, total);
         getCounterSmooth(totalValue, total);
     };
 
     //плавный счетчик
-    const getCounterSmooth = (num, elem) => {
-        const time = 0.01;
-        let step = 0;
-        if (calcSquare.value < 100) {
-            step = 100;
-        }
-        if (calcSquare.value >= 100) {
-            step = 4000;
-        }
-        let n = 0;
-        let t = Math.round(time / (num / step));
-        let interval = setInterval(() => {
-            n = n + step;
-            if (n >= Math.round(num)) {
-                clearInterval(interval);
-            }
-            elem.textContent = n;
-        }, t);
+    const getCounterSmoothAnimate = (num, elem) => {
+        animate({
+            duration: 500,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                elem.textContent = Math.round(num * progress);
+            },
+        });
     };
 
     calcBlock.addEventListener("input", e => {
