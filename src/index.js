@@ -5,6 +5,7 @@ import validation from "./modules/validCalc.js";
 import tabs from "./modules/tabs.js";
 import slider from "./modules/slider.js";
 import calc from "./modules/calc.js";
+import sendForm from "./modules/sendForm.js";
 
 menu();
 timer("31 december 2022");
@@ -23,3 +24,4 @@ slider({
     arrowPrevId: "arrow-left",
 });
 calc(100);
+sendForm(form1);
