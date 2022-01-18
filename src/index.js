@@ -24,4 +24,7 @@ slider({
     arrowPrevId: "arrow-left",
 });
 calc(100);
-sendForm(form1);
+sendForm({
+    formId: "form1",
+    someElem: [{ type: "block", id: "total" }],
+});
