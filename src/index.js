@@ -26,5 +26,11 @@ slider({
 calc(100);
 sendForm({
     formId: "form1",
-    someElem: [{ type: "block", id: "total" }],
+    //someElem: [{ type: "block", id: "total" }],
+});
+sendForm({
+    formId: "form2",
+});
+sendForm({
+    formId: "form3",
 });
