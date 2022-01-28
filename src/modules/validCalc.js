@@ -9,13 +9,13 @@ const validation = () => {
 
     const allInputsText = [...inputsText, ...inputsHoldersTextMess];
 
-    calcItems.forEach((calcItem) => {
+    calcItems.forEach(calcItem => {
         calcItem.addEventListener("input", () => {
             calcItem.value = calcItem.value.replace(/\D/g, "");
         });
     });
 
-    allInputsText.forEach((inputText) => {
+    allInputsText.forEach(inputText => {
         inputText.addEventListener("input", () => {
             inputText.value = inputText.value.replace(/[^а-яA-Z.\s\-]/gi, "");
         });
@@ -31,17 +31,18 @@ const validation = () => {
         });
     });
 
-    inputsEmail.forEach((inputEmail) => {
+    inputsEmail.forEach(inputEmail => {
         inputEmail.addEventListener("input", () => {
             inputEmail.value = inputEmail.value.replace(/[^\w0-9\.@!_~*']+/gi, "");
         });
-    });
+    }); ///^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i
 
-    inputsTel.forEach((inputTel) => {
+    inputsTel.forEach(inputTel => {
         inputTel.addEventListener("input", () => {
             inputTel.value = inputTel.value.replace(/[^\d\()\-]/g, "");
         });
     });
-};
+}; ///^+\d[\d\(\)\ -]{4,14}\d$/
+///^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/
 
 export default validation;

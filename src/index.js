@@ -6,6 +6,7 @@ import tabs from "./modules/tabs.js";
 import slider from "./modules/slider.js";
 import calc from "./modules/calc.js";
 import sendForm from "./modules/sendForm.js";
+import validForm from "./modules/validForms.js";
 
 menu();
 timer("31 december 2022");
@@ -34,3 +35,4 @@ sendForm({
 sendForm({
     formId: "form3",
 });
+validForm();
