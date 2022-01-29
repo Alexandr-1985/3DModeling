@@ -43,7 +43,7 @@ const calc = (price = 100) => {
         //выводим
         //   total.textContent = totalValue;
         getCounterSmoothAnimate(totalValue, total);
-        getCounterSmooth(totalValue, total);
+        //getCounterSmooth(totalValue, total);
     };
 
     //плавный счетчик

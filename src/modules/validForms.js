@@ -23,12 +23,12 @@ const validForm = () => {
                     target.placeholder === "Ваш E-mail"
                 ) {
                     target.required = true;
-                    target.value = target.value.replace(/[^\w\s+@\-]|(.)(?=\1)/gi, "");
+                    target.value = target.value.replace(/[^\w\s+@\-.]|(.)(?=\1)/gi, "");
                     if (target.value) {
+                        target.style.border = "2px solid green";
+                    } else {
                         target.value = "";
                         target.style.border = "2px solid red";
-                    } else {
-                        target.style.border = "2px solid green";
                     }
                 } else if (
                     target.placeholder === "Номер телефона" ||
